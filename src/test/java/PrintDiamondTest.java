@@ -4,7 +4,13 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Class to ...
+ * Class to test the print diamond katal.
+ *
+ * []ToTest: for input A print A one line
+ * []ToTest: for input B print
+ * ' A '
+ * 'B B'
+ * ' A '
  *
  * @author lumiha
  * @since 16/05/15.
@@ -12,7 +18,12 @@ import static org.junit.Assert.assertThat;
 public class PrintDiamondTest {
 
     @Test
-    public void env_ok() {
-        assertThat("ok", is("ok"));
+    public void printDiamond_forA() {
+        final String output = printDiamond();
+        assertThat(output, is("A"));
+    }
+
+    private String printDiamond() {
+        return "A";
     }
 }
