@@ -44,11 +44,11 @@ public class PrintDiamondTest {
     private String[] printDiamond(final char character) {
         if (character == 'C') {
             return new String[]{
-                    format('A')
+                    format('A', 5)
                     , " B B "
                     , "C   C"
                     , " B B "
-                     , format('A')
+                     , format('A', 5)
             };
         } else if (character == 'B') {
             return new String[]{
@@ -62,10 +62,10 @@ public class PrintDiamondTest {
 
     }
 
-    private String format(final char character) {
-        final char[] chars = new char[5];
+    private String format(final char character, final int width) {
+        final char[] chars = new char[width];
         Arrays.fill(chars, ' ');
-        chars[5/2] = character;
+        chars[width/2] = character;
 
         return String.valueOf(chars);
     }
