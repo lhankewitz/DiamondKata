@@ -57,24 +57,13 @@ public class PrintDiamondTest {
         final int distance = character - 'A';
         final int width = distance * 2 + 1;
         if (character == 'D') {
-
             return calculateRows(distance, width);
         } else if (character == 'C') {
-            return new String[]{
-                    format(width, 0)
-                    , format(width, 1)
-                    , format(width, 2)
-                    , format(width, 1)
-                    , format(width, 0)
-            };
+            return calculateRows(distance, width);
         } else if (character == 'B') {
-            return new String[]{
-                    format(width, 0)
-                    , format(width, 1)
-                    , format(width, 0)
-            };
+            return calculateRows(distance, width);
         } else {
-            return new String[]{format(width, 0)};
+            return calculateRows(distance, width);
         }
 
     }
