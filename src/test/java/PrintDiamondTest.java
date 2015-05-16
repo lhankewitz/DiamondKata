@@ -52,9 +52,9 @@ public class PrintDiamondTest {
             };
         } else if (character == 'B') {
             return new String[]{
-                      " "+ 'A' +" "
+                      format('A',3)
                     , "B B"
-                    ,  " "+ 'A' +" "
+                    , format('A',3)
             };
         } else {
             return new String[]{String.valueOf('A')};
