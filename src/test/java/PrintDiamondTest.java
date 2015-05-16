@@ -43,21 +43,24 @@ public class PrintDiamondTest {
 
     private String[] printDiamond(final char character) {
         if (character == 'C') {
+
             return new String[]{
-                    formatCharacter1('A', 5)
+                    format('A', 5, 0)
                     , format('B', 5, 1)
                     , format('C', 5, 2)
                     , format('B', 5, 1)
-                     , formatCharacter1('A', 5)
+                     , format('A', 5, 0)
             };
         } else if (character == 'B') {
+
             return new String[]{
-                      formatCharacter1('A', 3)
+                    format('A', 3, 0)
                     , format('B', 3, 1)
-                    , formatCharacter1('A', 3)
+                    , format('A', 3, 0)
             };
         } else {
-            return new String[]{formatCharacter1('A', 1)};
+
+            return new String[]{format('A', 1, 0)};
         }
 
     }
@@ -70,11 +73,4 @@ public class PrintDiamondTest {
         return String.valueOf(chars);
     }
 
-    private String formatCharacter1(final char character, final int width) {
-        final char[] chars = new char[width];
-        Arrays.fill(chars, ' ');
-        chars[width/2] = character;
-
-        return String.valueOf(chars);
-    }
 }
