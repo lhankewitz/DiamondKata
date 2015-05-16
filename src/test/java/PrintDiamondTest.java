@@ -1,4 +1,3 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -20,18 +19,23 @@ public class PrintDiamondTest {
 
     @Test
     public void printDiamond_forA() {
-        final String[] output = printDiamond();
+        final String[] output = printDiamond("A");
         assertThat(output[0], is("A"));
     }
 
     @Test
-    @Ignore("first refactor to multi line input")
     public void printDiamond_forB() {
-        final String output[] = printDiamond();
-        assertThat(output[0], is("A"));
+        final String output[] = printDiamond("B");
+        assertThat(output[0], is(" A "));
+        assertThat(output[1], is("B B"));
     }
 
-    private String[] printDiamond() {
-        return new String[]{"A"};
+    private String[] printDiamond(final String character) {
+        if(character.equals("B")){
+            return new String[]{
+                    " A ", "B B"
+            };
+        }
+        return new String[]{character};
     }
 }
