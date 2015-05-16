@@ -41,9 +41,30 @@ public class PrintDiamondTest {
         assertThat(output[4], is("  A  "));
     }
 
+    @Test
+    public void printDiamond_forD() {
+        final String output[] = printDiamond('D');
+        assertThat(output[0], is("   A   "));
+        assertThat(output[1], is("  B B  "));
+        assertThat(output[2], is(" C   C "));
+        assertThat(output[3], is("D     D"));
+        assertThat(output[4], is(" C   C "));
+        assertThat(output[5], is("  B B  "));
+        assertThat(output[6], is("   A   "));
+    }
+
     private String[] printDiamond(final char character) {
-        final int width = (character - 'A') * 2 + 1;
-        if (character == 'C') {
+        final int distance = character - 'A';
+        final int width = distance * 2 + 1;
+        if (character == 'D') {
+            String[] rows = new String[width];
+            for(int i = 0; i < rows.length; i++){
+                if(i <= distance) rows[i] = format(width, i);
+                else rows[i] = format(width, (width-1) - i );
+            }
+
+            return rows;
+        } else if (character == 'C') {
             return new String[]{
                     format(width, 0)
                     , format(width, 1)
