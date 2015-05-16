@@ -55,7 +55,7 @@ public class PrintDiamondTest {
                     , " A "
             };
         } else {
-            return new String[]{String.valueOf(character)};
+            return new String[]{"A"};
         }
 
     }
