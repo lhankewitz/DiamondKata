@@ -19,23 +19,23 @@ public class PrintDiamondTest {
 
     @Test
     public void printDiamond_forA() {
-        final String[] output = printDiamond("A");
+        final String[] output = printDiamond('A');
         assertThat(output[0], is("A"));
     }
 
     @Test
     public void printDiamond_forB() {
-        final String output[] = printDiamond("B");
+        final String output[] = printDiamond('B');
         assertThat(output[0], is(" A "));
         assertThat(output[1], is("B B"));
     }
 
-    private String[] printDiamond(final String character) {
-        if(character.equals("B")){
+    private String[] printDiamond(final char character) {
+        if(character == 'B'){
             return new String[]{
                     " A ", "B B"
             };
         }
-        return new String[]{character};
+        return new String[]{String.valueOf(character)};
     }
 }
