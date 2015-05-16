@@ -5,12 +5,10 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Class to test the print diamond katal.
- * <p/>
- * [x]ToTest: for input A print A one line
- * []ToTest: for input B print
- * ' A '
- * 'B B'
- * ' A '
+ *
+ * [x]ToTest: for input A print diamond
+ * [X]ToTest: for input B print diamond
+ * [X]ToTest: for input C print diamond
  *
  * @author lumiha
  * @since 16/05/15.
@@ -31,8 +29,26 @@ public class PrintDiamondTest {
         assertThat(output[2], is(" A "));
     }
 
+    @Test
+    public void printDiamond_forC() {
+        final String output[] = printDiamond('C');
+        assertThat(output[0], is( "  A  "));
+        assertThat(output[1], is( " B B "));
+        assertThat(output[2], is( "C   C"));
+        assertThat(output[3], is( " B B "));
+        assertThat(output[4], is( "  A  "));
+    }
+
     private String[] printDiamond(final char character) {
-        if (character == 'B') {
+        if (character == 'C') {
+            return new String[]{
+                      "  A  "
+                    , " B B "
+                    , "C   C"
+                    , " B B "
+                    , "  A  "
+            };
+        } else if (character == 'B') {
             return new String[]{
                       " A "
                     , "B B"
