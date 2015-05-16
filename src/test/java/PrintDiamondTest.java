@@ -43,12 +43,13 @@ public class PrintDiamondTest {
 
     private String[] printDiamond(final char character) {
         if (character == 'C') {
+            final int width = ('C' - 'A') * 2 + 1;
             return new String[]{
-                    format(5, 0)
-                    , format(5, 1)
-                    , format(5, 2)
-                    , format(5, 1)
-                    , format(5, 0)
+                    format(width, 0)
+                    , format(width, 1)
+                    , format(width, 2)
+                    , format(width, 1)
+                    , format(width, 0)
             };
         } else if (character == 'B') {
             return new String[]{
