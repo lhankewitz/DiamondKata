@@ -65,7 +65,7 @@ public class PrintDiamondTest {
     private String format(final char character) {
         final char[] chars = new char[5];
         Arrays.fill(chars, ' ');
-        chars[2] = character;
+        chars[5/2] = character;
 
         return String.valueOf(chars);
     }
