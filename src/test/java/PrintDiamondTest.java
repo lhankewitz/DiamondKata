@@ -42,21 +42,25 @@ public class PrintDiamondTest {
     private String[] printDiamond(final char character) {
         if (character == 'C') {
             return new String[]{
-                      "  A  "
+                    format('A')
                     , " B B "
                     , "C   C"
                     , " B B "
-                    , "  A  "
+                     , format('A')
             };
         } else if (character == 'B') {
             return new String[]{
-                      " A "
+                      " "+ 'A' +" "
                     , "B B"
-                    , " A "
+                    ,  " "+ 'A' +" "
             };
         } else {
-            return new String[]{"A"};
+            return new String[]{String.valueOf('A')};
         }
 
+    }
+
+    private String format(final char character) {
+        return "  " + character + "  ";
     }
 }
