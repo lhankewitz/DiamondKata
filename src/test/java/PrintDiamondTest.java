@@ -65,8 +65,8 @@ public class PrintDiamondTest {
     private String formatBs(final char character, final int width) {
         char[] chars = new char[width];
         Arrays.fill(chars, ' ');
-        chars[1] = character;
-        chars[3] = 'B';
+        chars[(width/2) - 1] = character;
+        chars[(width/2) + 1] = character;
         return String.valueOf(chars);
     }
 
