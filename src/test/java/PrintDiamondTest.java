@@ -42,8 +42,8 @@ public class PrintDiamondTest {
     }
 
     private String[] printDiamond(final char character) {
+        final int width = (character - 'A') * 2 + 1;
         if (character == 'C') {
-            final int width = ('C' - 'A') * 2 + 1;
             return new String[]{
                     format(width, 0)
                     , format(width, 1)
@@ -52,14 +52,12 @@ public class PrintDiamondTest {
                     , format(width, 0)
             };
         } else if (character == 'B') {
-            final int width = ('B' - 'A') * 2 + 1;
             return new String[]{
                     format(width, 0)
                     , format(width, 1)
                     , format(width, 0)
             };
         } else {
-            final int width = ('A' - 'A') * 2 + 1;
             return new String[]{format(width, 0)};
         }
 
