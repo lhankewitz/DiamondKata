@@ -66,8 +66,9 @@ public class PrintDiamondTest {
     private String format(final int width, final int level) {
         char[] chars = new char[width];
         Arrays.fill(chars, ' ');
-        chars[(width/2) - level] = (char) ('A' + level);
-        chars[(width/2) + level] = (char) ('A' + level);
+        final char levelCharacter = (char) ('A' + level);
+        chars[(width / 2) - level] = levelCharacter;
+        chars[(width / 2) + level] = levelCharacter;
         return String.valueOf(chars);
     }
 
