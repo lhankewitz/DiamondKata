@@ -59,8 +59,8 @@ public class PrintDiamondTest {
                     , format(width, 0)
             };
         } else {
-
-            return new String[]{format(1, 0)};
+            final int width = ('A' - 'A') * 2 + 1;
+            return new String[]{format(width, 0)};
         }
 
     }
