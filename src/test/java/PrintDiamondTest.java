@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -61,6 +63,10 @@ public class PrintDiamondTest {
     }
 
     private String format(final char character) {
-        return "  " + character + "  ";
+        final char[] chars = new char[5];
+        Arrays.fill(chars, ' ');
+        chars[2] = character;
+
+        return String.valueOf(chars);
     }
 }
