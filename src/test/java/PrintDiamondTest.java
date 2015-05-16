@@ -57,7 +57,7 @@ public class PrintDiamondTest {
                     , format('A',3)
             };
         } else {
-            return new String[]{String.valueOf('A')};
+            return new String[]{format('A',1)};
         }
 
     }
