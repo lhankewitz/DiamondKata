@@ -45,15 +45,15 @@ public class PrintDiamondTest {
         if (character == 'C') {
             return new String[]{
                     formatCharacter1('A', 5)
-                    , formatCharacter2('B', 5)
-                    , formatCharacter3('C', 5)
-                    , formatCharacter2('B', 5)
+                    , format('B', 5, 1)
+                    , format('C', 5, 2)
+                    , format('B', 5, 1)
                      , formatCharacter1('A', 5)
             };
         } else if (character == 'B') {
             return new String[]{
                       formatCharacter1('A', 3)
-                    , formatCharacter2('B', 3)
+                    , format('B', 3, 1)
                     , formatCharacter1('A', 3)
             };
         } else {
@@ -62,19 +62,11 @@ public class PrintDiamondTest {
 
     }
 
-    private String formatCharacter3(final char character, final int width) {
+    private String format(final char character, final int width, final int level) {
         char[] chars = new char[width];
         Arrays.fill(chars, ' ');
-        chars[(width /2) - 2] = character;
-        chars[(width /2) + 2] = character;
-        return String.valueOf(chars);
-    }
-
-    private String formatCharacter2(final char character, final int width) {
-        char[] chars = new char[width];
-        Arrays.fill(chars, ' ');
-        chars[(width/2) - 1] = character;
-        chars[(width/2) + 1] = character;
+        chars[(width/2) - level] = character;
+        chars[(width/2) + level] = character;
         return String.valueOf(chars);
     }
 
