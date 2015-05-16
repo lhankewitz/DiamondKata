@@ -53,7 +53,7 @@ public class PrintDiamondTest {
         } else if (character == 'B') {
             return new String[]{
                       format('A',3)
-                    , "B B"
+                    , formatBs('B', 3)
                     , format('A',3)
             };
         } else {
