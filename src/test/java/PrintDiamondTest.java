@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -17,15 +15,17 @@ import static org.junit.Assert.assertThat;
  */
 public class PrintDiamondTest {
 
+    private final DiamondGenerator diamondGenerator = new DiamondGenerator();
+
     @Test
     public void printDiamond_forA() {
-        final String[] output = printDiamond('A');
+        final String[] output = diamondGenerator.printDiamond('A');
         assertThat(output[0], is("A"));
     }
 
     @Test
     public void printDiamond_forB() {
-        final String output[] = printDiamond('B');
+        final String output[] = diamondGenerator.printDiamond('B');
         assertThat(output[0], is(" A "));
         assertThat(output[1], is("B B"));
         assertThat(output[2], is(" A "));
@@ -33,7 +33,7 @@ public class PrintDiamondTest {
 
     @Test
     public void printDiamond_forC() {
-        final String output[] = printDiamond('C');
+        final String output[] = diamondGenerator.printDiamond('C');
         assertThat(output[0], is("  A  "));
         assertThat(output[1], is(" B B "));
         assertThat(output[2], is("C   C"));
@@ -43,7 +43,7 @@ public class PrintDiamondTest {
 
     @Test
     public void printDiamond_forD() {
-        final String output[] = printDiamond('D');
+        final String output[] = diamondGenerator.printDiamond('D');
         assertThat(output[0], is("   A   "));
         assertThat(output[1], is("  B B  "));
         assertThat(output[2], is(" C   C "));
@@ -51,29 +51,6 @@ public class PrintDiamondTest {
         assertThat(output[4], is(" C   C "));
         assertThat(output[5], is("  B B  "));
         assertThat(output[6], is("   A   "));
-    }
-
-    private String[] printDiamond(final char character) {
-        final int distance = character - 'A';
-        final int width = distance * 2 + 1;
-        return calculateRows(distance, new String[width]);
-    }
-
-    private String[] calculateRows(final int distance, final String[] rows) {
-        for (int i = 0; i < rows.length; i++) {
-            if (i <= distance) rows[i] = format(rows.length, i);
-            else rows[i] = format(rows.length, (rows.length - 1) - i);
-        }
-        return rows;
-    }
-
-    private String format(final int width, final int level) {
-        char[] chars = new char[width];
-        Arrays.fill(chars, ' ');
-        final char levelCharacter = (char) ('A' + level);
-        chars[(width / 2) - level] = levelCharacter;
-        chars[(width / 2) + level] = levelCharacter;
-        return String.valueOf(chars);
     }
 
 }
