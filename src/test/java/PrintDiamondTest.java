@@ -46,7 +46,7 @@ public class PrintDiamondTest {
             return new String[]{
                     formatCharacter1('A', 5)
                     , formatCharacter2('B', 5)
-                    , "C   C"
+                    , formatCharacter3()
                     , formatCharacter2('B', 5)
                      , formatCharacter1('A', 5)
             };
@@ -60,6 +60,16 @@ public class PrintDiamondTest {
             return new String[]{formatCharacter1('A', 1)};
         }
 
+    }
+
+    private String formatCharacter3() {
+        final int width = 5;
+        final char character = 'C';
+        char[] chars = new char[width];
+        Arrays.fill(chars, ' ');
+        chars[(width/2) - 2] = character;
+        chars[(width/2) + 2] = character;
+        return String.valueOf(chars);
     }
 
     private String formatCharacter2(final char character, final int width) {
