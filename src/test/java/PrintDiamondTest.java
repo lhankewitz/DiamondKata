@@ -45,9 +45,9 @@ public class PrintDiamondTest {
         if (character == 'C') {
             return new String[]{
                     format('A', 5)
-                    , " B B "
+                    , formatBs('B', 5)
                     , "C   C"
-                    , " B B "
+                    , formatBs('B', 5)
                      , format('A', 5)
             };
         } else if (character == 'B') {
@@ -60,6 +60,14 @@ public class PrintDiamondTest {
             return new String[]{format('A',1)};
         }
 
+    }
+
+    private String formatBs(final char character, final int width) {
+        char[] chars = new char[width];
+        Arrays.fill(chars, ' ');
+        chars[1] = character;
+        chars[3] = 'B';
+        return String.valueOf(chars);
     }
 
     private String format(final char character, final int width) {
