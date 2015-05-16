@@ -57,13 +57,8 @@ public class PrintDiamondTest {
         final int distance = character - 'A';
         final int width = distance * 2 + 1;
         if (character == 'D') {
-            String[] rows = new String[width];
-            for(int i = 0; i < rows.length; i++){
-                if(i <= distance) rows[i] = format(width, i);
-                else rows[i] = format(width, (width-1) - i );
-            }
 
-            return rows;
+            return calculateRows(distance, width);
         } else if (character == 'C') {
             return new String[]{
                     format(width, 0)
@@ -82,6 +77,15 @@ public class PrintDiamondTest {
             return new String[]{format(width, 0)};
         }
 
+    }
+
+    private String[] calculateRows(final int distance, final int width) {
+        String[] rows = new String[width];
+        for(int i = 0; i < rows.length; i++){
+            if(i <= distance) rows[i] = format(width, i);
+            else rows[i] = format(width, (width-1) - i );
+        }
+        return rows;
     }
 
     private String format(final int width, final int level) {
