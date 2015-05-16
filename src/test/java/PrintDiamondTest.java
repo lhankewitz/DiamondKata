@@ -52,10 +52,11 @@ public class PrintDiamondTest {
                     , format(width, 0)
             };
         } else if (character == 'B') {
+            final int width = ('B' - 'A') * 2 + 1;
             return new String[]{
-                    format(3, 0)
-                    , format(3, 1)
-                    , format(3, 0)
+                    format(width, 0)
+                    , format(width, 1)
+                    , format(width, 0)
             };
         } else {
 
