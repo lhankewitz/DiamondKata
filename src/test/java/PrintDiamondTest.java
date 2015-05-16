@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Class to test the print diamond katal.
- *
+ * <p/>
  * [x]ToTest: for input A print A one line
  * []ToTest: for input B print
  * ' A '
@@ -28,14 +28,19 @@ public class PrintDiamondTest {
         final String output[] = printDiamond('B');
         assertThat(output[0], is(" A "));
         assertThat(output[1], is("B B"));
+        assertThat(output[2], is(" A "));
     }
 
     private String[] printDiamond(final char character) {
-        if(character == 'B'){
+        if (character == 'B') {
             return new String[]{
-                    " A ", "B B"
+                      " A "
+                    , "B B"
+                    , " A "
             };
+        } else {
+            return new String[]{String.valueOf(character)};
         }
-        return new String[]{String.valueOf(character)};
+
     }
 }
