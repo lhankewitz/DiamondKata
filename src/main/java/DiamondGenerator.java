@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DiamondGenerator {
     public DiamondGenerator() {
@@ -47,9 +45,8 @@ public class DiamondGenerator {
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
     }
 
-    public String formatRow(final char character, final char diamondCharacter) {
+    public String formatRow(final char character, final int distance) {
         StringBuilder row = new StringBuilder();
-        final int distance = diamondCharacter - character;
         if(character == 'C' && distance == 0){
             row.append(character);
             row.append(' ');
