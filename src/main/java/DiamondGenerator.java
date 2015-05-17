@@ -4,6 +4,7 @@ import java.util.List;
 public class DiamondGenerator {
 
     private static final char START_CHARACTER = 'A';
+    private static final int NUM_OF_EDGE_CHARACTER = 2;
 
     public DiamondGenerator() {
     }
@@ -62,11 +63,15 @@ public class DiamondGenerator {
     }
 
     private void fillGap(final StringBuilder row, final int distanceToA) {
-        final int diamondWidth = (distanceToA * 2) + 1;
-        final int gapWidth = diamondWidth - 2;
+        final int gapWidth = getDiamondWidth(distanceToA) - NUM_OF_EDGE_CHARACTER;
         for (int i = 0; i < gapWidth; i++) {
             row.append(' ');
         }
+    }
+
+    private int getDiamondWidth(final int distanceToA) {
+        // A + twice the distance to the edge character
+        return 1 + (2* distanceToA);
     }
 
     public int calculateDistance(final char character, final char diamondCharacter) {
