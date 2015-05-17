@@ -53,4 +53,10 @@ public class PrintDiamondTest {
         assertThat(output[6], is("   A   "));
     }
 
+    @Test
+    public void formatRow_forA_resultsInA() {
+        final String result = diamondGenerator.formatRow('A');
+        assertThat(result, is("A"));
+    }
+
 }

@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DiamondGenerator {
     public DiamondGenerator() {
@@ -38,9 +40,14 @@ public class DiamondGenerator {
         return String.valueOf(chars);
     }
 
+
     public static void main(String[] args) {
         final DiamondGenerator diamondGenerator = new DiamondGenerator();
 
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
+    }
+
+    public String formatRow(final char character) {
+        return "A";
     }
 }
