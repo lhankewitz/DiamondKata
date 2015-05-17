@@ -51,11 +51,14 @@ public class DiamondGenerator {
         if(character == 'B' && diamondCharacter == 'C'){
             return " B B ";
         }
-        if(character == 'A' && diamondCharacter == 'B'){
-            return " A ";
-        }
         if(character == 'B' && diamondCharacter == character){
             return "B B";
+        }
+        if(character == 'A' && diamondCharacter == 'C'){
+            return "  A  ";
+        }
+        if(character == 'A' && diamondCharacter == 'B'){
+            return " A ";
         }
         if(character == 'A' && diamondCharacter == character){
             return "A";
