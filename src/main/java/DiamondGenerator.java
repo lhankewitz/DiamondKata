@@ -15,22 +15,20 @@ public class DiamondGenerator {
     public String[] printDiamond(final char diamondCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        formatRows(rows, diamondCharacter, 0);
+        formatRows(rows, diamondCharacter, 'A');
 
         return rows.toArray(new String[rows.size()]);
     }
 
 
-    private void formatRows(final List<String> rows, final char diamondCharacter, final int level) {
-        final char levelCharacter = (char) ('A' + level);
-        final int distanceToEdge = diamondCharacter - levelCharacter;
+    private void formatRows(final List<String> rows, final char diamondCharacter, final char levelCharacter) {
 
         final StringBuilder row = new StringBuilder();
-        formatRow(row, levelCharacter, distanceToEdge);
+        formatRow(row, levelCharacter, diamondCharacter - levelCharacter);
 
-        if (distanceToEdge > 0) {
+        if (levelCharacter != diamondCharacter) {
             rows.add(row.toString());
-            formatRows(rows, diamondCharacter, level + 1);
+            formatRows(rows, diamondCharacter, (char) (levelCharacter + 1));
             rows.add(row.toString());
         } else {
             rows.add(row.toString());
