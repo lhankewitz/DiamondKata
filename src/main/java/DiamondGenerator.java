@@ -13,34 +13,36 @@ public class DiamondGenerator {
     }
 
     public String[] printDiamond(final char diamondCharacter) {
-        final int distance = calculateDistance('A', diamondCharacter);
+
         final List<String> rows = new ArrayList<>();
-        formatRows(rows, distance, 0);
+        formatRows(rows, diamondCharacter, 0);
 
         return rows.toArray(new String[0]);
     }
 
 
-    public void formatRows(final List<String> rows, final int distance, final int level) {
+    public void formatRows(final List<String> rows, final char diamondCharacter, final int level) {
+        final int distance = calculateDistance('A', diamondCharacter);
         final StringBuilder row = new StringBuilder();
-        formatRow((char) ('A' + level), distance - level, row);
+        final char levelCharacter = (char) ('A' + level);
+        formatRow(row, levelCharacter, distance - level);
 
         if (level < distance) {
             rows.add(row.toString());
-            formatRows(rows, distance, level + 1);
+            formatRows(rows, diamondCharacter, level + 1);
             rows.add(row.toString());
         } else {
             rows.add(row.toString());
         }
     }
 
-    public String formatRow(final char character, final int distanceToEdge, final StringBuilder row) {
+    public String formatRow(final StringBuilder row, final char character, final int distanceToEdge) {
         final int distanceToA = character - 'A';
 
 
         if (distanceToEdge > 0) {
             row.append(' ');
-            formatRow(character, distanceToEdge - 1, row);
+            formatRow(row, character, distanceToEdge - 1);
             row.append(' ');
         } else {
             if (distanceToA > 0) {
