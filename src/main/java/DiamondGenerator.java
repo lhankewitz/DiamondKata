@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DiamondGenerator {
+
     public DiamondGenerator() {
     }
 
@@ -12,47 +12,49 @@ public class DiamondGenerator {
         diamondGenerator.printDiamond('Z').forEach(System.out::println);
     }
 
-    public List<String> printDiamond(final char diamondCharacter) {
+    public List<String> printDiamond(final char edgeCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        generateDiamondRows(rows, 'A', diamondCharacter);
+        generateDiamondRows(rows, 'A', edgeCharacter);
 
         return rows;
     }
 
 
-    private void generateDiamondRows(final List<String> rows, final char levelCharacter, final char diamondCharacter) {
+    private void generateDiamondRows(final List<String> rows, final char levelCharacter, final char edgeCharacter) {
 
         final StringBuilder row = new StringBuilder();
-        formatRow(row, levelCharacter, diamondCharacter - levelCharacter);
+        formatRow(row, levelCharacter, edgeCharacter - levelCharacter);
 
-        if (levelCharacter != diamondCharacter) {
+        if (levelCharacter != edgeCharacter) {
             rows.add(row.toString());
-            generateDiamondRows(rows, (char) (levelCharacter + 1), diamondCharacter);
+            generateDiamondRows(rows, getNextLevelCharacter(levelCharacter), edgeCharacter);
             rows.add(row.toString());
         } else {
             rows.add(row.toString());
         }
     }
 
-    public String formatRow(final StringBuilder row, final char character, final int distanceToEdge) {
-        final int distanceToA = character - 'A';
+    private char getNextLevelCharacter(final char levelCharacter) {
+        return (char) (levelCharacter + 1);
+    }
 
+    public String formatRow(final StringBuilder row, final char levelCharacter, final int distanceToEdge) {
+        final int distanceToA = levelCharacter - 'A';
 
         if (distanceToEdge > 0) {
             row.append(' ');
-            formatRow(row, character, distanceToEdge - 1);
+            formatRow(row, levelCharacter, distanceToEdge - 1);
             row.append(' ');
         } else {
             if (distanceToA > 0) {
-                row.append(character);
+                row.append(levelCharacter);
                 fillGap(row, distanceToA);
-                row.append(character);
+                row.append(levelCharacter);
             } else  {
-                row.append(character);
+                row.append(levelCharacter);
             }
         }
-
 
         return row.toString();
     }
