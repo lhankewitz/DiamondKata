@@ -17,11 +17,11 @@ public class DiamondGenerator {
         final List<String> rows = new ArrayList<>();
         formatRows(rows, diamondCharacter, 0);
 
-        return rows.toArray(new String[0]);
+        return rows.toArray(new String[rows.size()]);
     }
 
 
-    public void formatRows(final List<String> rows, final char diamondCharacter, final int level) {
+    private void formatRows(final List<String> rows, final char diamondCharacter, final int level) {
         final char levelCharacter = (char) ('A' + level);
         final int distanceToEdge = diamondCharacter - levelCharacter;
 
