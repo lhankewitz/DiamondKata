@@ -82,5 +82,10 @@ public class PrintDiamondTest {
         final String result = diamondGenerator.formatRow('A', 'C');
         assertThat(result, is("  A  "));
     }
+    @Test
+    public void formatRow_forCWhenDiamondForC_resultsInCRowWithBlanks() {
+        final String result = diamondGenerator.formatRow('C', 'C');
+        assertThat(result, is("C   C"));
+    }
 
 }
