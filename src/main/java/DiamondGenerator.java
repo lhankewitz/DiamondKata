@@ -64,15 +64,15 @@ public class DiamondGenerator {
             formatRow(character, distanceToEdge - 1, row);
             row.append(' ');
         }
-        if (distanceToA == 0) {
-            if (distanceToEdge == 2 || distanceToEdge == 1) {
-                row.append(' ');
-                formatRow(character, distanceToEdge - 1, row);
-                row.append(' ');
-            }
-            if (distanceToEdge == 0) {
-                row.append(character);
-            }
+
+        if (distanceToA == 0 && distanceToEdge > 0) {
+            row.append(' ');
+            formatRow(character, distanceToEdge - 1, row);
+            row.append(' ');
+        }
+
+        if (distanceToA == 0 && distanceToEdge == 0) {
+            row.append(character);
         }
 
         return row.toString();
