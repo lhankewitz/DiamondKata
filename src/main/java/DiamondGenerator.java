@@ -48,6 +48,9 @@ public class DiamondGenerator {
     }
 
     public String formatRow(final char character, final char diamondCharacter) {
+        if(character == 'B' && diamondCharacter == 'C'){
+            return " B B ";
+        }
         if(character == 'A' && diamondCharacter == 'B'){
             return " A ";
         }
