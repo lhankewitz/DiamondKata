@@ -45,8 +45,7 @@ public class DiamondGenerator {
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
     }
 
-    public String formatRow(final char character, final int distance) {
-        StringBuilder row = new StringBuilder();
+    public String formatRow(final char character, final int distance, final StringBuilder row) {
         if(character == 'C' && distance == 0){
             row.append(character);
             row.append(' ');

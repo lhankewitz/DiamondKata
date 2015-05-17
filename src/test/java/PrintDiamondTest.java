@@ -55,36 +55,36 @@ public class PrintDiamondTest {
 
     @Test
     public void formatRow_forA_resultsInA() {
-        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'A'));
+        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'A'), new StringBuilder());
         assertThat(result, is("A"));
     }
 
     @Test
     public void formatRow_forB_resultsInBRow() {
-        final String result = diamondGenerator.formatRow('B', diamondGenerator.calculateDistance('B', 'B'));
+        final String result = diamondGenerator.formatRow('B', diamondGenerator.calculateDistance('B', 'B'), new StringBuilder());
         assertThat(result, is("B B"));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForB_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'B'));
+        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'B'), new StringBuilder());
         assertThat(result, is(" A "));
     }
 
     @Test
     public void formatRow_forBWhenDiamondForC_resultsInBRowWithBlanks() {
-        final String result = diamondGenerator.formatRow('B', diamondGenerator.calculateDistance('B', 'C'));
+        final String result = diamondGenerator.formatRow('B', diamondGenerator.calculateDistance('B', 'C'), new StringBuilder());
         assertThat(result, is(" B B "));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForC_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'C'));
+        final String result = diamondGenerator.formatRow('A', diamondGenerator.calculateDistance('A', 'C'), new StringBuilder());
         assertThat(result, is("  A  "));
     }
     @Test
     public void formatRow_forCWhenDiamondForC_resultsInCRowWithBlanks() {
-        final String result = diamondGenerator.formatRow('C', diamondGenerator.calculateDistance('C', 'C'));
+        final String result = diamondGenerator.formatRow('C', diamondGenerator.calculateDistance('C', 'C'), new StringBuilder());
         assertThat(result, is("C   C"));
     }
 
