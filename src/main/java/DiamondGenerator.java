@@ -46,24 +46,25 @@ public class DiamondGenerator {
     }
 
     public String formatRow(final char character, final int distanceToEdge, final StringBuilder row) {
-        if (character == 'A' + 2 && distanceToEdge == 0) {
+        final int distanceToA = character - 'A';
+        if (distanceToA == 2 && distanceToEdge == 0) {
             row.append(character);
             row.append(' ');
             row.append(' ');
             row.append(' ');
             row.append(character);
         }
-        if (character == 'A' + 1 && distanceToEdge == 1) {
+        if (distanceToA == 1 && distanceToEdge == 0) {
+            row.append(character);
+            row.append(' ');
+            row.append(character);
+        }
+        if (distanceToA == 1 && distanceToEdge == 1) {
             row.append(' ');
             formatRow(character, distanceToEdge - 1, row);
             row.append(' ');
         }
-        if (character == 'A' + 1 && distanceToEdge == 0) {
-            row.append(character);
-            row.append(' ');
-            row.append(character);
-        }
-        if (character == 'A' + 0) {
+        if (distanceToA == 0) {
             if (distanceToEdge == 2 || distanceToEdge == 1) {
                 row.append(' ');
                 formatRow(character, distanceToEdge - 1, row);
