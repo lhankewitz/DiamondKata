@@ -9,26 +9,26 @@ public class DiamondGenerator {
     public static void main(String[] args) {
         final DiamondGenerator diamondGenerator = new DiamondGenerator();
 
-        Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
+        diamondGenerator.printDiamond('Z').forEach(System.out::println);
     }
 
-    public String[] printDiamond(final char diamondCharacter) {
+    public List<String> printDiamond(final char diamondCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        formatRows(rows, 'A', diamondCharacter);
+        generateDiamondRows(rows, 'A', diamondCharacter);
 
-        return rows.toArray(new String[rows.size()]);
+        return rows;
     }
 
 
-    private void formatRows(final List<String> rows, final char levelCharacter, final char diamondCharacter) {
+    private void generateDiamondRows(final List<String> rows, final char levelCharacter, final char diamondCharacter) {
 
         final StringBuilder row = new StringBuilder();
         formatRow(row, levelCharacter, diamondCharacter - levelCharacter);
 
         if (levelCharacter != diamondCharacter) {
             rows.add(row.toString());
-            formatRows(rows, (char) (levelCharacter + 1), diamondCharacter);
+            generateDiamondRows(rows, (char) (levelCharacter + 1), diamondCharacter);
             rows.add(row.toString());
         } else {
             rows.add(row.toString());
