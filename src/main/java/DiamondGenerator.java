@@ -55,9 +55,7 @@ public class DiamondGenerator {
         }
         if(character == 'B' && distance == 1){
             row.append(' ');
-            row.append(character);
-            row.append(' ');
-            row.append(character);
+            formatRow(character, distance -1, row);
             row.append(' ');
         }
         if(character == 'B' && distance == 0){
