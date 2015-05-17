@@ -49,21 +49,17 @@ public class DiamondGenerator {
         final int distanceToA = character - 'A';
         if (distanceToA == 3 && distanceToEdge == 0) {
             row.append(character);
-            for (int i = 1; i < (distanceToA * 2); i++) {
-                row.append(' ');
-            }
+            fillGap(row, distanceToA);
             row.append(character);
         }
         if (distanceToA == 2 && distanceToEdge == 0) {
             row.append(character);
-            row.append(' ');
-            row.append(' ');
-            row.append(' ');
+            fillGap(row, distanceToA);
             row.append(character);
         }
         if (distanceToA == 1 && distanceToEdge == 0) {
             row.append(character);
-            row.append(' ');
+            fillGap(row, distanceToA);
             row.append(character);
         }
         if (distanceToA == 1 && distanceToEdge == 1) {
@@ -83,6 +79,12 @@ public class DiamondGenerator {
         }
 
         return row.toString();
+    }
+
+    private void fillGap(final StringBuilder row, final int distanceToA) {
+        for (int i = 1; i < (distanceToA * 2); i++) {
+            row.append(' ');
+        }
     }
 
     public int calculateDistance(final char character, final char diamondCharacter) {
