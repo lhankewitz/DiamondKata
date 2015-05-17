@@ -54,11 +54,12 @@ public class DiamondGenerator {
             row.append(character);
         }
 
-        if (distanceToA == 1 && distanceToEdge > 0) {
+        if (distanceToA > 0 && distanceToEdge > 0) {
             row.append(' ');
             formatRow(character, distanceToEdge - 1, row);
             row.append(' ');
         }
+
 
         if (distanceToA == 0 && distanceToEdge > 0) {
             row.append(' ');
