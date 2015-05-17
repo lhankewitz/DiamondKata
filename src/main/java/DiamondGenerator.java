@@ -63,14 +63,9 @@ public class DiamondGenerator {
             row.append(' ');
             row.append(character);
         }
-        if(character == 'A' && distance == 2){
+        if(character == 'A' && (distance == 2 || distance == 1)){
             row.append(' ');
             formatRow(character, distance - 1, row);
-            row.append(' ');
-        }
-        if(character == 'A' && distance == 1){
-            row.append(' ');
-            formatRow(character, distance -1, row);
             row.append(' ');
         }
         if(character == 'A' && distance == 0){
