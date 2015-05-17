@@ -22,12 +22,13 @@ public class DiamondGenerator {
 
 
     public void formatRows(final List<String> rows, final char diamondCharacter, final int level) {
-        final int distance = calculateDistance('A', diamondCharacter);
-        final StringBuilder row = new StringBuilder();
         final char levelCharacter = (char) ('A' + level);
-        formatRow(row, levelCharacter, distance - level);
+        final int distanceToEdge = diamondCharacter - levelCharacter;
 
-        if (level < distance) {
+        final StringBuilder row = new StringBuilder();
+        formatRow(row, levelCharacter, distanceToEdge);
+
+        if (distanceToEdge > 0) {
             rows.add(row.toString());
             formatRows(rows, diamondCharacter, level + 1);
             rows.add(row.toString());
