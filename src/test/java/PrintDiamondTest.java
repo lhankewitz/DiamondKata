@@ -55,14 +55,20 @@ public class PrintDiamondTest {
 
     @Test
     public void formatRow_forA_resultsInA() {
-        final String result = diamondGenerator.formatRow('A');
+        final String result = diamondGenerator.formatRow('A', 'A');
         assertThat(result, is("A"));
     }
 
     @Test
     public void formatRow_forB_resultsInBRow() {
-        final String result = diamondGenerator.formatRow('B');
+        final String result = diamondGenerator.formatRow('B', 'B');
         assertThat(result, is("B B"));
+    }
+
+    @Test
+    public void formatRow_forAWhenDiamondForB_resultsInARowWithBlanks() {
+        final String result = diamondGenerator.formatRow('A', 'B');
+        assertThat(result, is(" A "));
     }
 
 }

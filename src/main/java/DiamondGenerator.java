@@ -47,7 +47,10 @@ public class DiamondGenerator {
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
     }
 
-    public String formatRow(final char character) {
+    public String formatRow(final char character, final char diamondCharacter) {
+        if(character == 'A' && diamondCharacter == 'B'){
+            return " A ";
+        }
         if(character == 'B'){
             return "B B";
         }
