@@ -57,48 +57,48 @@ public class PrintDiamondTest {
 
     @Test
     public void formatRow_forA_resultsInA() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'A'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'A'));
         assertThat(result, is("A"));
     }
 
     @Test
     public void formatRow_forB_resultsInBRow() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'B', diamondGenerator.calculateDistance('B', 'B'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'B', diamondGenerator.calculateDistance('B', 'B'));
         assertThat(result, is("B B"));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForB_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'B'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'B'));
         assertThat(result, is(" A "));
     }
 
     @Test
     public void formatRow_forBWhenDiamondForC_resultsInBRowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'B', diamondGenerator.calculateDistance('B', 'C'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'B', diamondGenerator.calculateDistance('B', 'C'));
         assertThat(result, is(" B B "));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForC_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'C'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', diamondGenerator.calculateDistance('A', 'C'));
         assertThat(result, is("  A  "));
     }
     @Test
     public void formatRow_forCWhenDiamondForC_resultsInCRowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'C', diamondGenerator.calculateDistance('C', 'C'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'C', diamondGenerator.calculateDistance('C', 'C'));
         assertThat(result, is("C   C"));
     }
 
     @Test
     public void formatRow_forDAndDiamondForD_resultsIn_D_RowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'D', diamondGenerator.calculateDistance('D', 'D'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'D', diamondGenerator.calculateDistance('D', 'D'));
         assertThat(result, is("D     D"));
     }
 
     @Test
     public void formatRow_forCAndDiamondForD_resultsIn_C_RowWithBlanks() {
-        final String result = diamondGenerator.formatRow(new StringBuilder(), 'C', diamondGenerator.calculateDistance('C', 'D'));
+        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'C', diamondGenerator.calculateDistance('C', 'D'));
         assertThat(result, is(" C   C "));
     }
 

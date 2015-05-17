@@ -26,15 +26,15 @@ public class DiamondGenerator {
 
     private void addDiamondRows(final List<String> rows, final char levelCharacter, final char maxCharacter) {
 
-        final StringBuilder row = new StringBuilder();
-        formatRow(row, levelCharacter, maxCharacter - levelCharacter);
+        final StringBuilder levelRow = new StringBuilder();
+        formatLevelRow(levelRow, levelCharacter, maxCharacter - levelCharacter);
 
         if (levelCharacter != maxCharacter) {
-            rows.add(row.toString());
+            rows.add(levelRow.toString());
             addDiamondRows(rows, getNextLevelCharacter(levelCharacter), maxCharacter);
-            rows.add(row.toString());
+            rows.add(levelRow.toString());
         } else {
-            rows.add(row.toString());
+            rows.add(levelRow.toString());
         }
     }
 
@@ -42,23 +42,31 @@ public class DiamondGenerator {
         return (char) (levelCharacter + 1);
     }
 
-    public String formatRow(final StringBuilder row, final char levelCharacter, final int distanceToMaxChar) {
+    public String formatLevelRow(final StringBuilder row, final char levelCharacter, final int numOfLevelPaddingBlanks) {
 
-        if (distanceToMaxChar > 0) {
-            row.append(' ');
-            formatRow(row, levelCharacter, distanceToMaxChar - 1);
-            row.append(' ');
+        if (numOfLevelPaddingBlanks > 0) {
+            fillLevelPaddingBlanks(row, numOfLevelPaddingBlanks, levelCharacter);
         } else {
-            if (levelCharacter > START_CHARACTER) {
-                row.append(levelCharacter);
-                row.append(getGap(levelCharacter));
-                row.append(levelCharacter);
-            } else  {
-                row.append(levelCharacter);
-            }
+            addDiamondForLevel(row, levelCharacter);
         }
 
         return row.toString();
+    }
+
+    private void fillLevelPaddingBlanks(final StringBuilder row, final int numBlanksToWidth, final char levelCharacter) {
+        row.append(' ');
+        formatLevelRow(row, levelCharacter, numBlanksToWidth - 1);
+        row.append(' ');
+    }
+
+    private void addDiamondForLevel(final StringBuilder row, final char levelCharacter) {
+        if (levelCharacter > START_CHARACTER) {
+            row.append(levelCharacter);
+            row.append(getGap(levelCharacter));
+            row.append(levelCharacter);
+        } else  {
+            row.append(levelCharacter);
+        }
     }
 
     private String getGap(final char levelCharacter) {
