@@ -57,6 +57,10 @@ public class DiamondGenerator {
         if(character == 'B' && diamondCharacter == character){
             return "B B";
         }
-        return "A";
+        if(character == 'A' && diamondCharacter == character){
+            return "A";
+        }
+
+        return "";
     }
 }
