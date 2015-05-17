@@ -51,38 +51,38 @@ public class DiamondGenerator {
         StringBuilder row = new StringBuilder();
         final int distance = diamondCharacter - character;
         if(character == 'C' && distance == 0){
-            row.append('C');
+            row.append(character);
             row.append(' ');
             row.append(' ');
             row.append(' ');
-            row.append('C');
+            row.append(character);
         }
         if(character == 'B' && distance == 1){
             row.append(' ');
-            row.append('B');
+            row.append(character);
             row.append(' ');
-            row.append('B');
+            row.append(character);
             row.append(' ');
         }
         if(character == 'B' && distance == 0){
-            row.append('B');
+            row.append(character);
             row.append(' ');
-            row.append('B');
+            row.append(character);
         }
         if(character == 'A' && distance == 2){
             row.append(' ');
             row.append(' ');
-            row.append('A');
+            row.append(character);
             row.append(' ');
             row.append(' ');
         }
         if(character == 'A' && distance == 1){
             row.append(' ');
-            row.append('A');
+            row.append(character);
             row.append(' ');
         }
         if(character == 'A' && distance == 0){
-            row.append('A');
+            row.append(character);
         }
 
         return row.toString();
