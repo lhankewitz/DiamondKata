@@ -59,4 +59,10 @@ public class PrintDiamondTest {
         assertThat(result, is("A"));
     }
 
+    @Test
+    public void formatRow_forB_resultsInBRow() {
+        final String result = diamondGenerator.formatRow('B');
+        assertThat(result, is("B B"));
+    }
+
 }
