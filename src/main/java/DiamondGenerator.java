@@ -3,6 +3,8 @@ import java.util.List;
 
 public class DiamondGenerator {
 
+    private static final char START_CHARACTER = 'A';
+
     public DiamondGenerator() {
     }
 
@@ -15,7 +17,7 @@ public class DiamondGenerator {
     public List<String> printDiamond(final char edgeCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        generateDiamondRows(rows, 'A', edgeCharacter);
+        generateDiamondRows(rows, START_CHARACTER, edgeCharacter);
 
         return rows;
     }
@@ -40,7 +42,7 @@ public class DiamondGenerator {
     }
 
     public String formatRow(final StringBuilder row, final char levelCharacter, final int distanceToEdge) {
-        final int distanceToA = levelCharacter - 'A';
+        final int distanceToA = levelCharacter - START_CHARACTER;
 
         if (distanceToEdge > 0) {
             row.append(' ');
