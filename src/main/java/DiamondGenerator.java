@@ -45,31 +45,33 @@ public class DiamondGenerator {
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
     }
 
-    public String formatRow(final char character, final int distance, final StringBuilder row) {
-        if(character == 'C' && distance == 0){
+    public String formatRow(final char character, final int distanceToEdge, final StringBuilder row) {
+        if (character == 'A' + 2 && distanceToEdge == 0) {
             row.append(character);
             row.append(' ');
             row.append(' ');
             row.append(' ');
             row.append(character);
         }
-        if(character == 'B' && distance == 1){
+        if (character == 'A' + 1 && distanceToEdge == 1) {
             row.append(' ');
-            formatRow(character, distance -1, row);
+            formatRow(character, distanceToEdge - 1, row);
             row.append(' ');
         }
-        if(character == 'B' && distance == 0){
+        if (character == 'A' + 1 && distanceToEdge == 0) {
             row.append(character);
             row.append(' ');
             row.append(character);
         }
-        if(character == 'A' && (distance == 2 || distance == 1)){
-            row.append(' ');
-            formatRow(character, distance - 1, row);
-            row.append(' ');
-        }
-        if(character == 'A' && distance == 0){
-            row.append(character);
+        if (character == 'A' + 0) {
+            if (distanceToEdge == 2 || distanceToEdge == 1) {
+                row.append(' ');
+                formatRow(character, distanceToEdge - 1, row);
+                row.append(' ');
+            }
+            if (distanceToEdge == 0) {
+                row.append(character);
+            }
         }
 
         return row.toString();
