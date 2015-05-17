@@ -88,4 +88,10 @@ public class PrintDiamondTest {
         assertThat(result, is("C   C"));
     }
 
+    @Test
+    public void formatRow_forDAndDiamondForD_resultsIn_D_RowWithBlanks() {
+        final String result = diamondGenerator.formatRow('D', diamondGenerator.calculateDistance('D', 'D'), new StringBuilder());
+        assertThat(result, is("D     D"));
+    }
+
 }
