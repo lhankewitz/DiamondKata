@@ -15,23 +15,23 @@ public class DiamondGenerator {
         diamondGenerator.printDiamond('Z').forEach(System.out::println);
     }
 
-    public List<String> printDiamond(final char edgeCharacter) {
+    public List<String> printDiamond(final char maxCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        generateDiamondRows(rows, START_CHARACTER, edgeCharacter);
+        addDiamondRows(rows, START_CHARACTER, maxCharacter);
 
         return rows;
     }
 
 
-    private void generateDiamondRows(final List<String> rows, final char levelCharacter, final char edgeCharacter) {
+    private void addDiamondRows(final List<String> rows, final char levelCharacter, final char maxCharacter) {
 
         final StringBuilder row = new StringBuilder();
-        formatRow(row, levelCharacter, edgeCharacter - levelCharacter);
+        formatRow(row, levelCharacter, maxCharacter - levelCharacter);
 
-        if (levelCharacter != edgeCharacter) {
+        if (levelCharacter != maxCharacter) {
             rows.add(row.toString());
-            generateDiamondRows(rows, getNextLevelCharacter(levelCharacter), edgeCharacter);
+            addDiamondRows(rows, getNextLevelCharacter(levelCharacter), maxCharacter);
             rows.add(row.toString());
         } else {
             rows.add(row.toString());
@@ -42,17 +42,16 @@ public class DiamondGenerator {
         return (char) (levelCharacter + 1);
     }
 
-    public String formatRow(final StringBuilder row, final char levelCharacter, final int distanceToEdge) {
-        final int distanceToA = levelCharacter - START_CHARACTER;
+    public String formatRow(final StringBuilder row, final char levelCharacter, final int distanceToMaxChar) {
 
-        if (distanceToEdge > 0) {
+        if (distanceToMaxChar > 0) {
             row.append(' ');
-            formatRow(row, levelCharacter, distanceToEdge - 1);
+            formatRow(row, levelCharacter, distanceToMaxChar - 1);
             row.append(' ');
         } else {
-            if (distanceToA > 0) {
+            if (levelCharacter > START_CHARACTER) {
                 row.append(levelCharacter);
-                row.append(getGap(distanceToA));
+                row.append(getGap(levelCharacter));
                 row.append(levelCharacter);
             } else  {
                 row.append(levelCharacter);
@@ -62,15 +61,21 @@ public class DiamondGenerator {
         return row.toString();
     }
 
-    private String getGap(final int distanceToA) {
-        final int gapWidth = getDiamondWidth(distanceToA) - NUM_OF_EDGE_CHARACTER;
+    private String getGap(final char levelCharacter) {
+        final int gapWidth = getDiamondWidthAt(levelCharacter) - NUM_OF_EDGE_CHARACTER;
 
-        return String.format("%" + gapWidth + "c", ' ');
+        return getBlanksOfLength(gapWidth);
     }
 
-    private int getDiamondWidth(final int distanceToA) {
+    private String getBlanksOfLength(final int length) {
+        return String.format("%" + length + "c", ' ');
+    }
+
+    private int getDiamondWidthAt(final char levelCharacter) {
         // A + twice the distance to the edge character
-        return 1 + (2* distanceToA);
+        final int distanceToA2 = levelCharacter - START_CHARACTER;
+
+        return 1 + (2* distanceToA2);
     }
 
     public int calculateDistance(final char character, final char diamondCharacter) {
