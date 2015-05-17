@@ -48,25 +48,42 @@ public class DiamondGenerator {
     }
 
     public String formatRow(final char character, final char diamondCharacter) {
+        StringBuilder row = new StringBuilder();
         if(character == 'C' && diamondCharacter == character){
-            return "C   C";
+            row.append('C');
+            row.append(' ');
+            row.append(' ');
+            row.append(' ');
+            row.append('C');
         }
         if(character == 'B' && diamondCharacter == 'C'){
-            return " B B ";
+            row.append(' ');
+            row.append('B');
+            row.append(' ');
+            row.append('B');
+            row.append(' ');
         }
         if(character == 'B' && diamondCharacter == character){
-            return "B B";
+            row.append('B');
+            row.append(' ');
+            row.append('B');
         }
         if(character == 'A' && diamondCharacter == 'C'){
-            return "  A  ";
+            row.append(' ');
+            row.append(' ');
+            row.append('A');
+            row.append(' ');
+            row.append(' ');
         }
         if(character == 'A' && diamondCharacter == 'B'){
-            return " A ";
+            row.append(' ');
+            row.append('A');
+            row.append(' ');
         }
         if(character == 'A' && diamondCharacter == character){
-            return "A";
+            row.append('A');
         }
 
-        return "";
+        return row.toString();
     }
 }
