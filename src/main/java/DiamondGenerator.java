@@ -62,7 +62,7 @@ public class DiamondGenerator {
     }
 
     private void fillGap(final StringBuilder row, final int distanceToA) {
-        for (int i = 1; i < (distanceToA * 2); i++) {
+        for (int i = 0; i < (distanceToA * 2) - 1; i++) {
             row.append(' ');
         }
     }
