@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DiamondGenerator {
     public DiamondGenerator() {
@@ -8,20 +10,27 @@ public class DiamondGenerator {
         final int distance = calculateDistance('A', character);
         final int width = distance * 2 + 1;
         final String[] rows = new String[width];
-        formatRows(rows, distance, 0);
+        final ArrayList<String> rows2 = new ArrayList<>();
+        formatRows(rows, distance, 0, rows2);
 
-        return rows;
+        return rows2.toArray(new String[0]);
+//        return rows;
     }
 
-    public void formatRows(final String[] rows, final int distance, final int level) {
+    public void formatRows(final String[] rows, final int distance, final int level, final List<String> rows2) {
         final String levelFormat = format(rows.length, level);
+        final StringBuilder row = new StringBuilder();
+        formatRow((char) ('A' + level), distance - level, row);
 
         if (level < distance) {
+            rows2.add(row.toString());
             rows[level] = levelFormat;
-            formatRows(rows, distance, level + 1);
+            formatRows(rows, distance, level + 1, rows2);
             rows[(rows.length - 1) - level] = levelFormat;
+            rows2.add(row.toString());
         } else {
             rows[level] = levelFormat;
+            rows2.add(row.toString());
         }
     }
 
