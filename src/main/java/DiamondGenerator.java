@@ -1,11 +1,13 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DiamondGenerator {
     public DiamondGenerator() {
     }
 
     public String[] printDiamond(final char character) {
-        final int distance = character - 'A';
+        final int distance = calculateDistance('A', character);
         final int width = distance * 2 + 1;
         final String[] rows = new String[width];
         formatRows(rows, distance, 0);
@@ -45,8 +47,9 @@ public class DiamondGenerator {
         Arrays.asList(diamondGenerator.printDiamond('Z')).forEach(System.out::println);
     }
 
-    public String formatRow(final char character, final int distance) {
+    public String formatRow(final char character, final char diamondCharacter) {
         StringBuilder row = new StringBuilder();
+        final int distance = calculateDistance(character, diamondCharacter);
         if(character == 'C' && distance == 0){
             row.append(character);
             row.append(' ');
@@ -83,5 +86,9 @@ public class DiamondGenerator {
         }
 
         return row.toString();
+    }
+
+    public int calculateDistance(final char character, final char diamondCharacter) {
+        return diamondCharacter - character;
     }
 }
