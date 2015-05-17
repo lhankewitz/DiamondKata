@@ -49,38 +49,39 @@ public class DiamondGenerator {
 
     public String formatRow(final char character, final char diamondCharacter) {
         StringBuilder row = new StringBuilder();
-        if(character == 'C' && diamondCharacter == character){
+        final int distance = diamondCharacter - character;
+        if(character == 'C' && distance == 0){
             row.append('C');
             row.append(' ');
             row.append(' ');
             row.append(' ');
             row.append('C');
         }
-        if(character == 'B' && diamondCharacter == 'C'){
+        if(character == 'B' && distance == 1){
             row.append(' ');
             row.append('B');
             row.append(' ');
             row.append('B');
             row.append(' ');
         }
-        if(character == 'B' && diamondCharacter == character){
+        if(character == 'B' && distance == 0){
             row.append('B');
             row.append(' ');
             row.append('B');
         }
-        if(character == 'A' && diamondCharacter == 'C'){
+        if(character == 'A' && distance == 2){
             row.append(' ');
             row.append(' ');
             row.append('A');
             row.append(' ');
             row.append(' ');
         }
-        if(character == 'A' && diamondCharacter == 'B'){
+        if(character == 'A' && distance == 1){
             row.append(' ');
             row.append('A');
             row.append(' ');
         }
-        if(character == 'A' && diamondCharacter == character){
+        if(character == 'A' && distance == 0){
             row.append('A');
         }
 
