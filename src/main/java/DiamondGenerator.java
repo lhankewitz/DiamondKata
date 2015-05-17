@@ -52,7 +52,7 @@ public class DiamondGenerator {
         } else {
             if (distanceToA > 0) {
                 row.append(levelCharacter);
-                fillGap(row, distanceToA);
+                row.append(getGap(distanceToA));
                 row.append(levelCharacter);
             } else  {
                 row.append(levelCharacter);
@@ -62,11 +62,10 @@ public class DiamondGenerator {
         return row.toString();
     }
 
-    private void fillGap(final StringBuilder row, final int distanceToA) {
+    private String getGap(final int distanceToA) {
         final int gapWidth = getDiamondWidth(distanceToA) - NUM_OF_EDGE_CHARACTER;
-        for (int i = 0; i < gapWidth; i++) {
-            row.append(' ');
-        }
+
+        return String.format("%" + gapWidth + "c", ' ');
     }
 
     private int getDiamondWidth(final int distanceToA) {
