@@ -21,20 +21,18 @@ public class PrintDiamondMooseTest {
 
     private String printDiamond(final char character) {
         StringBuilder sequence = new StringBuilder();
-        iterateOverCharacter(sequence, character);
+        iterateOverCharacter(sequence, 'A', character);
 
         return sequence.toString();
     }
 
-    private void iterateOverCharacter(final StringBuilder sequence, final char character) {
-        for (char c = 'A'; c <= (character-1); c++) {
-            addDiamondLine(sequence, c, character);
-        }
-
-        addDiamondLine(sequence, character, character);
-
-        for (char c = (char) (character - 1); c >= 'A'; c--) {
-            addDiamondLine(sequence, c, character);
+    private void iterateOverCharacter(final StringBuilder sequence, final char levelCharacter, final char character) {
+        if (levelCharacter != character) {
+            addDiamondLine(sequence, levelCharacter, character);
+            iterateOverCharacter(sequence, (char) (levelCharacter + 1), character);
+            addDiamondLine(sequence, levelCharacter, character);
+        } else {
+            addDiamondLine(sequence, character, character);
         }
     }
 
