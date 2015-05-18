@@ -21,17 +21,23 @@ public class PrintDiamondMooseTest {
 
     private String printDiamond(final char character) {
         StringBuilder sequence = new StringBuilder();
-        for(char c = 'A'; c <= character; c++){
-            sequence.append(c);
-            if(c != 'A') sequence.append(c);
-            if(character != 'A') sequence.append("\n");
-        }
+        iterateOverCharacter(sequence, character);
 
         return sequence.toString();
     }
 
+    private void iterateOverCharacter(final StringBuilder sequence, final char character) {
+        for(char c = 'A'; c <= character; c++){
+            final int intent = character - c;
+            if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
+            sequence.append(c);
+            if(c != 'A') sequence.append(c);
+            if(character != 'A') sequence.append("\n");
+        }
+    }
+
     @Test
-    public void printDiamond_forB_shouldPutEachCharacterOnItsOwnLine() {
-        assertThat(printDiamond('B'), is("A\nBB\n"));
+    public void printDiamond_forB_shouldIndentAllButTheDefiningCharacter() {
+        assertThat(printDiamond('B'), is(" A\nBB\n"));
     }
 }
