@@ -23,13 +23,14 @@ public class PrintDiamondMooseTest {
         StringBuilder sequence = new StringBuilder();
         for(char c = 'A'; c <= character; c++){
             sequence.append(c);
+            if(c != 'A') sequence.append(c);
         }
 
         return sequence.toString();
     }
 
     @Test
-    public void printDiamond_forB_shouldGiveCharacterSequence() {
-        assertThat(printDiamond('B'), is("AB"));
+    public void printDiamond_forB_shouldRepeatCharacter() {
+        assertThat(printDiamond('B'), is("ABB"));
     }
 }
