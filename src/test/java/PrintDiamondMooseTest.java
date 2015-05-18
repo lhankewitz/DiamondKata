@@ -37,6 +37,17 @@ public class PrintDiamondMooseTest {
             }
             if(character != 'A') sequence.append("\n");
         }
+
+        for(char c = (char) (character - 1); c >= 'A'; c--){
+            final int intent = character - c;
+            if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
+            sequence.append(c);
+            if(c != 'A') {
+                sequence.append(getBlanksGap(c));
+                sequence.append(c);
+            }
+            if(character != 'A') sequence.append("\n");
+        }
     }
 
     private String getBlanksGap(final char c) {
@@ -46,8 +57,8 @@ public class PrintDiamondMooseTest {
     }
 
     @Test
-    public void printDiamond_forC_shouldConsiderInnerCharacterSpaces() {
-        final String expectedDiamond = "  A\n B B\nC   C\n";
+    public void printDiamond_forC_shouldMirrorTheTopHalfOFDiamond() {
+        final String expectedDiamond = "  A\n B B\nC   C\n B B\n  A\n";
         System.out.println(expectedDiamond);
         assertThat(printDiamond('C'), is(expectedDiamond));
     }
