@@ -28,31 +28,31 @@ public class PrintDiamondGoriallaTest {
     @Test
     public void printDiamond_forB() {
         final List<String> output = diamondGenerator.printDiamond('B');
-        assertThat(output.get(0), is(" A "));
+        assertThat(output.get(0), is(" A"));
         assertThat(output.get(1), is("B B"));
-        assertThat(output.get(2), is(" A "));
+        assertThat(output.get(2), is(" A"));
     }
 
     @Test
     public void printDiamond_forC() {
         final List<String> output = diamondGenerator.printDiamond('C');
-        assertThat(output.get(0), is("  A  "));
-        assertThat(output.get(1), is(" B B "));
+        assertThat(output.get(0), is("  A"));
+        assertThat(output.get(1), is(" B B"));
         assertThat(output.get(2), is("C   C"));
-        assertThat(output.get(3), is(" B B "));
-        assertThat(output.get(4), is("  A  "));
+        assertThat(output.get(3), is(" B B"));
+        assertThat(output.get(4), is("  A"));
     }
 
     @Test
     public void printDiamond_forD() {
         final List<String> output = diamondGenerator.printDiamond('D');
-        assertThat(output.get(0), is("   A   "));
-        assertThat(output.get(1), is("  B B  "));
-        assertThat(output.get(2), is(" C   C "));
+        assertThat(output.get(0), is("   A"));
+        assertThat(output.get(1), is("  B B"));
+        assertThat(output.get(2), is(" C   C"));
         assertThat(output.get(3), is("D     D"));
-        assertThat(output.get(4), is(" C   C "));
-        assertThat(output.get(5), is("  B B  "));
-        assertThat(output.get(6), is("   A   "));
+        assertThat(output.get(4), is(" C   C"));
+        assertThat(output.get(5), is("  B B"));
+        assertThat(output.get(6), is("   A"));
     }
 
     @Test
@@ -70,19 +70,19 @@ public class PrintDiamondGoriallaTest {
     @Test
     public void formatRow_forAWhenDiamondForB_resultsInARowWithBlanks() {
         final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', 'B' - 'A');
-        assertThat(result, is(" A "));
+        assertThat(result, is(" A"));
     }
 
     @Test
     public void formatRow_forBWhenDiamondForC_resultsInBRowWithBlanks() {
         final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'B', 'C' - 'B');
-        assertThat(result, is(" B B "));
+        assertThat(result, is(" B B"));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForC_resultsInARowWithBlanks() {
         final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', 'C' - 'A');
-        assertThat(result, is("  A  "));
+        assertThat(result, is("  A"));
     }
     @Test
     public void formatRow_forCWhenDiamondForC_resultsInCRowWithBlanks() {
@@ -99,7 +99,7 @@ public class PrintDiamondGoriallaTest {
     @Test
     public void formatRow_forCAndDiamondForD_resultsIn_C_RowWithBlanks() {
         final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'C', 'D' - 'C');
-        assertThat(result, is(" C   C "));
+        assertThat(result, is(" C   C"));
     }
 
 }

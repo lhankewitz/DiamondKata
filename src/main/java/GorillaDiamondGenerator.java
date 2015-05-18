@@ -56,7 +56,6 @@ public class GorillaDiamondGenerator {
     private void fillLevelPaddingBlanks(final StringBuilder row, final int numBlanksToWidth, final char levelCharacter) {
         row.append(' ');
         formatLevelRow(row, levelCharacter, numBlanksToWidth - 1);
-        row.append(' ');
     }
 
     private void addDiamondForLevel(final StringBuilder row, final char levelCharacter) {
