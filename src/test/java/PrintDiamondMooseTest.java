@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Class to test printing the diamond the moose way:
- *
+ * <p>
  * <a href="http://claysnow.co.uk/recycling-tests-in-tdd/">Meaning of moose</a>
  *
  * @author lumiha
@@ -27,29 +27,31 @@ public class PrintDiamondMooseTest {
     }
 
     private void iterateOverCharacter(final StringBuilder sequence, final char character) {
-        for(char c = 'A'; c <= character; c++){
+        for (char c = 'A'; c <= (character-1); c++) {
             addDiamondLine(sequence, c, character);
         }
 
-        for(char c = (char) (character - 1); c >= 'A'; c--){
+        addDiamondLine(sequence, character, character);
+
+        for (char c = (char) (character - 1); c >= 'A'; c--) {
             addDiamondLine(sequence, c, character);
         }
     }
 
     private void addDiamondLine(final StringBuilder sequence, final char c, final char character) {
         final int intent = character - c;
-        if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
+        if (intent > 0) sequence.append(String.format("%" + intent + "c", ' '));
         sequence.append(c);
-        if(c != 'A') {
+        if (c != 'A') {
             sequence.append(getBlanksGap(c));
             sequence.append(c);
         }
-        if(character != 'A') sequence.append("\n");
+        if (character != 'A') sequence.append("\n");
     }
 
     private String getBlanksGap(final char c) {
         // twice the distance strictly (c-1) between c and A plus A
-        final int gapWidth = 2 * ((c-1) - 'A') + 1;
+        final int gapWidth = 2 * ((c - 1) - 'A') + 1;
         return String.format("%" + gapWidth + "c", ' ');
     }
 
