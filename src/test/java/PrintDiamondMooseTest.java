@@ -24,13 +24,14 @@ public class PrintDiamondMooseTest {
         for(char c = 'A'; c <= character; c++){
             sequence.append(c);
             if(c != 'A') sequence.append(c);
+            if(character != 'A') sequence.append("\n");
         }
 
         return sequence.toString();
     }
 
     @Test
-    public void printDiamond_forB_shouldRepeatCharacter() {
-        assertThat(printDiamond('B'), is("ABB"));
+    public void printDiamond_forB_shouldPutEachCharacterOnItsOwnLine() {
+        assertThat(printDiamond('B'), is("A\nBB\n"));
     }
 }
