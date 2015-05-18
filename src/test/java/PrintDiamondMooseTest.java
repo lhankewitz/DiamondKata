@@ -16,35 +16,50 @@ public class PrintDiamondMooseTest {
     @Test
     public void printDiamond_forA() {
         final String result = printDiamond('A');
-        assertThat(result, is("A"));
+        assertThat(result, is("A\n"));
     }
 
-    private String printDiamond(final char character) {
+    private String printDiamond(final char endCharacter) {
         StringBuilder sequence = new StringBuilder();
-        iterateOverCharacter(sequence, 'A', character);
+        generateDiamondLines(sequence, 'A', endCharacter);
 
         return sequence.toString();
     }
 
-    private void iterateOverCharacter(final StringBuilder sequence, final char levelCharacter, final char character) {
-        if (levelCharacter != character) {
-            addDiamondLine(sequence, levelCharacter, character);
-            iterateOverCharacter(sequence, (char) (levelCharacter + 1), character);
-            addDiamondLine(sequence, levelCharacter, character);
+    private void generateDiamondLines(final StringBuilder sequence, final char currentCharacter, final char endCharacter) {
+        if (currentCharacter != endCharacter) {
+            addDiamondLine(sequence, currentCharacter, endCharacter);
+
+            generateDiamondLines(sequence, getNextLevelCharacter(currentCharacter), endCharacter);
+
+            addDiamondLine(sequence, currentCharacter, endCharacter);
         } else {
-            addDiamondLine(sequence, character, character);
+            addDiamondLine(sequence, endCharacter, endCharacter);
         }
     }
 
-    private void addDiamondLine(final StringBuilder sequence, final char c, final char character) {
-        final int intent = character - c;
-        if (intent > 0) sequence.append(String.format("%" + intent + "c", ' '));
-        sequence.append(c);
-        if (c != 'A') {
-            sequence.append(getBlanksGap(c));
-            sequence.append(c);
+    private char getNextLevelCharacter(final char levelCharacter) {
+        return (char) (levelCharacter + 1);
+    }
+
+    private void addDiamondLine(final StringBuilder sequence, final char currentCharacter, final char endCharacter) {
+        addIntent(sequence, currentCharacter, endCharacter);
+
+        if (currentCharacter == 'A') {
+            sequence.append(currentCharacter);
+        } else {
+            sequence.append(currentCharacter);
+            sequence.append(getBlanksGap(currentCharacter));
+            sequence.append(currentCharacter);
         }
-        if (character != 'A') sequence.append("\n");
+
+        sequence.append("\n");
+    }
+
+    private void addIntent(final StringBuilder sequence, final char currentCharacter, final char endCharacter) {
+        final int intent = endCharacter - currentCharacter;
+
+        if (intent > 0) sequence.append(String.format("%" + intent + "c", ' '));
     }
 
     private String getBlanksGap(final char c) {
