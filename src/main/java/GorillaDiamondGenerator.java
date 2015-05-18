@@ -18,20 +18,20 @@ public class GorillaDiamondGenerator {
     public List<String> printDiamond(final char maxCharacter) {
 
         final List<String> rows = new ArrayList<>();
-        addDiamondRows(rows, START_CHARACTER, maxCharacter);
+        generateDiamondLines(rows, START_CHARACTER, maxCharacter);
 
         return rows;
     }
 
 
-    private void addDiamondRows(final List<String> rows, final char levelCharacter, final char maxCharacter) {
+    private void generateDiamondLines(final List<String> rows, final char levelCharacter, final char maxCharacter) {
 
         final StringBuilder levelRow = new StringBuilder();
         formatLevelRow(levelRow, levelCharacter, maxCharacter - levelCharacter);
 
         if (levelCharacter != maxCharacter) {
             rows.add(levelRow.toString());
-            addDiamondRows(rows, getNextLevelCharacter(levelCharacter), maxCharacter);
+            generateDiamondLines(rows, getNextLevelCharacter(levelCharacter), maxCharacter);
             rows.add(levelRow.toString());
         } else {
             rows.add(levelRow.toString());
@@ -60,33 +60,20 @@ public class GorillaDiamondGenerator {
     }
 
     private void addDiamondForLevel(final StringBuilder row, final char levelCharacter) {
-        if (levelCharacter > START_CHARACTER) {
+        if (levelCharacter == START_CHARACTER) {
             row.append(levelCharacter);
-            row.append(getGap(levelCharacter));
+        } else {
             row.append(levelCharacter);
-        } else  {
+            row.append(getBlanksGap(levelCharacter));
             row.append(levelCharacter);
         }
     }
 
-    private String getGap(final char levelCharacter) {
-        final int gapWidth = getDiamondWidthAt(levelCharacter) - NUM_OF_EDGE_CHARACTER;
-
-        return getBlanksOfLength(gapWidth);
-    }
-
-    private String getBlanksOfLength(final int length) {
-        return String.format("%" + length + "c", ' ');
-    }
-
-    private int getDiamondWidthAt(final char levelCharacter) {
+    private String getBlanksGap(final char levelCharacter) {
         // A + twice the distance to the edge character
         final int distanceToA2 = levelCharacter - START_CHARACTER;
 
-        return 1 + (2* distanceToA2);
-    }
-
-    public int calculateDistance(final char character, final char diamondCharacter) {
-        return diamondCharacter - character;
+        final int gapWidth = 1 + (2 * distanceToA2) - NUM_OF_EDGE_CHARACTER;
+        return String.format("%" + gapWidth + "c", ' ');
     }
 }

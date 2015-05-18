@@ -7,6 +7,8 @@
  * */
 public class MooseDiamondGenerator {
 
+    private static final char START_CHARACTER = 'A';
+
     public MooseDiamondGenerator() {
     }
 
@@ -18,7 +20,7 @@ public class MooseDiamondGenerator {
 
     public String printDiamond(final char endCharacter) {
         StringBuilder sequence = new StringBuilder();
-        generateDiamondLines(sequence, 'A', endCharacter);
+        generateDiamondLines(sequence, START_CHARACTER, endCharacter);
 
         return sequence.toString();
     }
@@ -42,7 +44,7 @@ public class MooseDiamondGenerator {
     private void addDiamondLine(final StringBuilder sequence, final char currentCharacter, final char endCharacter) {
         addIntent(sequence, currentCharacter, endCharacter);
 
-        if (currentCharacter == 'A') {
+        if (currentCharacter == START_CHARACTER) {
             sequence.append(currentCharacter);
         } else {
             sequence.append(currentCharacter);
@@ -61,7 +63,7 @@ public class MooseDiamondGenerator {
 
     private String getBlanksGap(final char c) {
         // twice the distance strictly (c-1) between c and A plus A
-        final int gapWidth = 2 * ((c - 1) - 'A') + 1;
+        final int gapWidth = 2 * ((c - 1) - START_CHARACTER) + 1;
         return String.format("%" + gapWidth + "c", ' ');
     }
 }
