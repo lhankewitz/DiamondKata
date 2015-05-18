@@ -31,13 +31,24 @@ public class PrintDiamondMooseTest {
             final int intent = character - c;
             if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
             sequence.append(c);
-            if(c != 'A') sequence.append(c);
+            if(c != 'A') {
+                sequence.append(getBlanksGap(c));
+                sequence.append(c);
+            }
             if(character != 'A') sequence.append("\n");
         }
     }
 
+    private String getBlanksGap(final char c) {
+        // twice the distance strictly (c-1) between c and A plus A
+        final int gapWidth = 2 * ((c-1) - 'A') + 1;
+        return String.format("%" + gapWidth + "c", ' ');
+    }
+
     @Test
-    public void printDiamond_forC_shouldIndentAllButTheDefiningCharacter() {
-        assertThat(printDiamond('C'), is("  A\n BB\nCC\n"));
+    public void printDiamond_forC_shouldConsiderInnerCharacterSpaces() {
+        final String expectedDiamond = "  A\n B B\nC   C\n";
+        System.out.println(expectedDiamond);
+        assertThat(printDiamond('C'), is(expectedDiamond));
     }
 }
