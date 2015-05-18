@@ -20,8 +20,12 @@ public class PrintDiamondMooseTest {
     }
 
     private String printDiamond(final char character) {
-        if(character == 'A') return "A";
-        else return "AB";
+        StringBuilder sequence = new StringBuilder();
+        for(char c = 'A'; c <= character; c++){
+            sequence.append(c);
+        }
+
+        return sequence.toString();
     }
 
     @Test
