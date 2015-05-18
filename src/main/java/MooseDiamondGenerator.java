@@ -1,4 +1,5 @@
 
+
 /**
  * Result of Moose version of TDD for Diamond Problem.
  *
@@ -9,8 +10,6 @@ public class MooseDiamondGenerator {
 
     private static final char START_CHARACTER = 'A';
 
-    public MooseDiamondGenerator() {
-    }
 
     public static void main(String[] args) {
         final MooseDiamondGenerator diamondGenerator = new MooseDiamondGenerator();
@@ -19,6 +18,7 @@ public class MooseDiamondGenerator {
     }
 
     public String printDiamond(final char endCharacter) {
+
         StringBuilder sequence = new StringBuilder();
         generateDiamondLines(sequence, START_CHARACTER, endCharacter);
 
@@ -29,7 +29,7 @@ public class MooseDiamondGenerator {
         if (currentCharacter != endCharacter) {
             addDiamondLine(sequence, currentCharacter, endCharacter);
 
-            generateDiamondLines(sequence, getNextLevelCharacter(currentCharacter), endCharacter);
+            generateDiamondLines(sequence, getNextCharacter(currentCharacter), endCharacter);
 
             addDiamondLine(sequence, currentCharacter, endCharacter);
         } else {
@@ -37,10 +37,11 @@ public class MooseDiamondGenerator {
         }
     }
 
-    private char getNextLevelCharacter(final char levelCharacter) {
-        return (char) (levelCharacter + 1);
+    private char getNextCharacter(final char currentCharacter) {
+        return (char) (currentCharacter + 1);
     }
 
+    // adds newline in contrast to the gorilla version
     private void addDiamondLine(final StringBuilder sequence, final char currentCharacter, final char endCharacter) {
         addIntent(sequence, currentCharacter, endCharacter);
 

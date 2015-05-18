@@ -57,48 +57,48 @@ public class PrintDiamondGoriallaTest {
 
     @Test
     public void formatRow_forA_resultsInA() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', 0);
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'A', 0);
         assertThat(result, is("A"));
     }
 
     @Test
     public void formatRow_forB_resultsInBRow() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'B', 0);
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'B', 0);
         assertThat(result, is("B B"));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForB_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', 'B' - 'A');
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'A', 'B' - 'A');
         assertThat(result, is(" A"));
     }
 
     @Test
     public void formatRow_forBWhenDiamondForC_resultsInBRowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'B', 'C' - 'B');
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'B', 'C' - 'B');
         assertThat(result, is(" B B"));
     }
 
     @Test
     public void formatRow_forAWhenDiamondForC_resultsInARowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'A', 'C' - 'A');
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'A', 'C' - 'A');
         assertThat(result, is("  A"));
     }
     @Test
     public void formatRow_forCWhenDiamondForC_resultsInCRowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'C', 0);
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'C', 0);
         assertThat(result, is("C   C"));
     }
 
     @Test
     public void formatRow_forDAndDiamondForD_resultsIn_D_RowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'D', 0);
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'D', 0);
         assertThat(result, is("D     D"));
     }
 
     @Test
     public void formatRow_forCAndDiamondForD_resultsIn_C_RowWithBlanks() {
-        final String result = diamondGenerator.formatLevelRow(new StringBuilder(), 'C', 'D' - 'C');
+        final String result = diamondGenerator.generateDiamondLine(new StringBuilder(), 'C', 'D' - 'C');
         assertThat(result, is(" C   C"));
     }
 
