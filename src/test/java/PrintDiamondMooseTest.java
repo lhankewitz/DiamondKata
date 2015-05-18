@@ -15,11 +15,17 @@ public class PrintDiamondMooseTest {
 
     @Test
     public void printDiamond_forA() {
-        final String result = printDiamond("A");
+        final String result = printDiamond('A');
         assertThat(result, is("A"));
     }
 
-    private String printDiamond(final String character) {
-        return "A";
+    private String printDiamond(final char character) {
+        if(character == 'A') return "A";
+        else return "AB";
+    }
+
+    @Test
+    public void printDiamond_forB_shouldGiveCharacterSequence() {
+        assertThat(printDiamond('B'), is("AB"));
     }
 }
