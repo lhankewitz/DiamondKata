@@ -17,7 +17,7 @@ import static org.junit.Assert.assertThat;
  */
 public class PrintDiamondTest {
 
-    private final DiamondGenerator diamondGenerator = new DiamondGenerator();
+    private final GorillaDiamondGenerator diamondGenerator = new GorillaDiamondGenerator();
 
     @Test
     public void printDiamond_forA() {

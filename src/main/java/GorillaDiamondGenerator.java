@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiamondGenerator {
+public class GorillaDiamondGenerator {
 
     private static final char START_CHARACTER = 'A';
     private static final int NUM_OF_EDGE_CHARACTER = 2;
 
-    public DiamondGenerator() {
+    public GorillaDiamondGenerator() {
     }
 
     public static void main(String[] args) {
-        final DiamondGenerator diamondGenerator = new DiamondGenerator();
+        final GorillaDiamondGenerator diamondGenerator = new GorillaDiamondGenerator();
 
         diamondGenerator.printDiamond('Z').forEach(System.out::println);
     }
