@@ -37,7 +37,7 @@ public class PrintDiamondMooseTest {
     }
 
     @Test
-    public void printDiamond_forB_shouldIndentAllButTheDefiningCharacter() {
+    public void printDiamond_forC_shouldIndentAllButTheDefiningCharacter() {
         assertThat(printDiamond('C'), is("  A\n BB\nCC\n"));
     }
 }
