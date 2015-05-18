@@ -28,26 +28,23 @@ public class PrintDiamondMooseTest {
 
     private void iterateOverCharacter(final StringBuilder sequence, final char character) {
         for(char c = 'A'; c <= character; c++){
-            final int intent = character - c;
-            if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
-            sequence.append(c);
-            if(c != 'A') {
-                sequence.append(getBlanksGap(c));
-                sequence.append(c);
-            }
-            if(character != 'A') sequence.append("\n");
+            addDiamondLine(sequence, c, character);
         }
 
         for(char c = (char) (character - 1); c >= 'A'; c--){
-            final int intent = character - c;
-            if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
-            sequence.append(c);
-            if(c != 'A') {
-                sequence.append(getBlanksGap(c));
-                sequence.append(c);
-            }
-            if(character != 'A') sequence.append("\n");
+            addDiamondLine(sequence, c, character);
         }
+    }
+
+    private void addDiamondLine(final StringBuilder sequence, final char c, final char character) {
+        final int intent = character - c;
+        if(intent > 0) sequence.append(String.format("%"+ intent +"c", ' '));
+        sequence.append(c);
+        if(c != 'A') {
+            sequence.append(getBlanksGap(c));
+            sequence.append(c);
+        }
+        if(character != 'A') sequence.append("\n");
     }
 
     private String getBlanksGap(final char c) {
